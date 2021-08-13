@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebApp", "VueWebApp\VueW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebApp.Api", "VueWebApp.Api\VueWebApp.Api.csproj", "{B7B07660-1908-404D-8560-28B60172C9F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueWebApp.Data", "VueWebApp.Data\VueWebApp.Data.csproj", "{20E5B6A2-EEE3-4C17-BA68-39CE90898003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebApp.Data", "VueWebApp.Data\VueWebApp.Data.csproj", "{20E5B6A2-EEE3-4C17-BA68-39CE90898003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueWebApp.Domain", "VueWebApp.Domain\VueWebApp.Domain.csproj", "{A80007BA-8104-4F84-AD21-D6ABDB5E6C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebApp.Domain", "VueWebApp.Domain\VueWebApp.Domain.csproj", "{A80007BA-8104-4F84-AD21-D6ABDB5E6C83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VueWebApp.IdentityServer", "IdentityServerAspNetIdentity\VueWebApp.IdentityServer.csproj", "{D52BEF14-1B2D-40F6-9E24-F01380B2C477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A80007BA-8104-4F84-AD21-D6ABDB5E6C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80007BA-8104-4F84-AD21-D6ABDB5E6C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A80007BA-8104-4F84-AD21-D6ABDB5E6C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52BEF14-1B2D-40F6-9E24-F01380B2C477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52BEF14-1B2D-40F6-9E24-F01380B2C477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52BEF14-1B2D-40F6-9E24-F01380B2C477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52BEF14-1B2D-40F6-9E24-F01380B2C477}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

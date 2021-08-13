@@ -14,8 +14,10 @@
 
   <ItemGroup>
     <Content Include="client-app\package.json" />
+    <Content Include="client-app\public\callback.html" />
     <Content Include="client-app\public\favicon.ico" />
     <Content Include="client-app\public\index.html" />
+    <Content Include="client-app\public\silent-renew.html" />
     <Content Include="client-app\src\assets\logo.png" />
     <Content Include="client-app\tsconfig.json" />
   </ItemGroup>
@@ -24,6 +26,7 @@
     <None Include="client-app\.gitignore" />
     <None Include="client-app\babel.config.js" />
     <None Include="client-app\jest.config.js" />
+    <None Include="client-app\public\js\oidc-client\oidc-client.min.js" />
     <None Include="client-app\README.md" />
     <None Include="client-app\src\App.vue" />
     <None Include="client-app\src\assets\scss\app.scss" />
@@ -49,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -71,6 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\components\auth\auth.service.ts" />
     <TypeScriptCompile Include="client-app\src\components\helloWorld\helloWorld.ts" />
     <TypeScriptCompile Include="client-app\src\main.ts" />
     <TypeScriptCompile Include="client-app\src\router\index.ts" />
