@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSwag;
+using System.Linq;
 using VueCliMiddleware;
 using VueWebApp.Api.Controllers;
 using VueWebApp.Data;
@@ -29,7 +31,17 @@ namespace VueWebApp
             services.AddControllers()
                 .AddApplicationPart(typeof(UserController).Assembly);
 
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(document =>
+            {
+                document.AddSecurity("Basic", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.OAuth2,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Provide Basic Authentiation",
+                    AuthorizationUrl = "https://localhost:5001/"
+                });
+            });
 
             services.AddDbContext<VueDbContext>(x =>
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

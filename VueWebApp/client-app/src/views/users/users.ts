@@ -1,5 +1,5 @@
 ﻿import { defineComponent } from 'vue'
-import { UserClient, UserDto } from "@/swagger"
+import { UserClient, UserDto } from "@/services/swagger"
 import moment from "moment"
 
 export default defineComponent({
@@ -38,11 +38,11 @@ export default defineComponent({
     },
 
     async mounted() {
-        const client = new UserClient();
+       const client = new UserClient();
 
-        this.users = await client.getUsers();
+       this.users = await client.getUsers();
 
-        this.loading = false;
+       this.loading = false;
     },
 
     methods: {

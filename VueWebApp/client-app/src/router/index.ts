@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home/Home.vue'
 import Users from '@/views/users/Users.vue'
+import { useStore } from '../store'
+import AuthService from '../services/auth/auth.service'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -28,4 +30,4 @@ const router = createRouter({
   routes
 })
 
-export default router
+export default router 

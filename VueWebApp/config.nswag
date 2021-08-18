@@ -120,7 +120,7 @@
       "checksumCacheEnabled": false,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "client-app/src/swagger.ts",
+      "output": "client-app/src/services/swagger.ts",
       "newLineBehavior": "Auto"
     }
   }

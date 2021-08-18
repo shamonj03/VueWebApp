@@ -37,8 +37,8 @@
     <None Include="client-app\src\main.js.map" />
     <None Include="client-app\src\router\index.js" />
     <None Include="client-app\src\router\index.js.map" />
-    <None Include="client-app\src\swagger.js" />
-    <None Include="client-app\src\swagger.js.map" />
+    <None Include="client-app\src\services\swagger.js" />
+    <None Include="client-app\src\services\swagger.js.map" />
     <None Include="client-app\src\views\about\About.vue" />
     <None Include="client-app\src\views\home\home.js" />
     <None Include="client-app\src\views\home\home.js.map" />
@@ -75,12 +75,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="client-app\src\components\auth\auth.service.ts" />
+    <TypeScriptCompile Include="client-app\src\app.ts" />
+    <TypeScriptCompile Include="client-app\src\services\auth\auth.service.ts" />
     <TypeScriptCompile Include="client-app\src\components\helloWorld\helloWorld.ts" />
     <TypeScriptCompile Include="client-app\src\main.ts" />
     <TypeScriptCompile Include="client-app\src\router\index.ts" />
+    <TypeScriptCompile Include="client-app\src\services\auth\authorizedApiBase.ts" />
     <TypeScriptCompile Include="client-app\src\shims-vue.d.ts" />
-    <TypeScriptCompile Include="client-app\src\swagger.ts" />
+    <TypeScriptCompile Include="client-app\src\services\swagger.ts" />
+    <TypeScriptCompile Include="client-app\src\store\index.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\actions.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\getters.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\index.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\mutations.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\state.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\auth\types.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\actions.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\getters.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\index.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\mutations.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\state.ts" />
+    <TypeScriptCompile Include="client-app\src\store\modules\root\types.ts" />
     <TypeScriptCompile Include="client-app\src\views\home\home.ts" />
     <TypeScriptCompile Include="client-app\src\views\users\users.ts" />
     <TypeScriptCompile Include="client-app\tests\unit\example.spec.ts" />

@@ -26,4 +26,7 @@ const router = createRouter({
     routes
 });
 export default router;
+router.beforeEach(guard => {
+    alert('test');
+});
 //# sourceMappingURL=index.js.map
