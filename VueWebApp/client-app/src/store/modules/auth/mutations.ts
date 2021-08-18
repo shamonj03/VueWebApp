@@ -1,4 +1,5 @@
-﻿import { MutationTree } from "vuex";
+﻿import { User } from "oidc-client";
+import { MutationTree } from "vuex";
 import { IAuthState } from "./state";
 
 export enum MutationTypes {
@@ -6,11 +7,11 @@ export enum MutationTypes {
 }
 
 export type AuthMutations<S = IAuthState>= {
-    [MutationTypes.SET_CURRENT_USER](state: S, payload: string): void;
+    [MutationTypes.SET_CURRENT_USER](state: S, payload: User): void;
 }
 
 export const mutations: MutationTree<IAuthState> & AuthMutations = {
-    [MutationTypes.SET_CURRENT_USER](state: IAuthState, payload: string) {
+    [MutationTypes.SET_CURRENT_USER](state: IAuthState, payload: User) {
         state.currentUser = payload;
     }
 };
