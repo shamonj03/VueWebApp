@@ -7,11 +7,11 @@ export enum MutationTypes {
 }
 
 export type AuthMutations<S = IAuthState>= {
-    [MutationTypes.SET_CURRENT_USER](state: S, payload: User): void;
+    [MutationTypes.SET_CURRENT_USER](state: S, payload: User | null): void;
 }
 
 export const mutations: MutationTree<IAuthState> & AuthMutations = {
-    [MutationTypes.SET_CURRENT_USER](state: IAuthState, payload: User) {
+    [MutationTypes.SET_CURRENT_USER](state: IAuthState, payload: User | null) {
         state.currentUser = payload;
     }
 };

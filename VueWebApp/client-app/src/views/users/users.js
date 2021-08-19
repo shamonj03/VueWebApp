@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { UserClient } from "@/swagger";
+import { UserClient } from "@/services/swagger";
 import moment from "moment";
 export default defineComponent({
     name: "User",

@@ -40,3 +40,5 @@ export default class AuthService {
         });
     }
 }
+
+export const auth = new AuthService();

@@ -1,50 +1,33 @@
-﻿import { defineComponent } from 'vue'
+﻿import { computed, defineComponent } from 'vue'
 
-import AuthService from '@/services/auth/auth.service';
-import { useStore } from '@/store';
+import { auth } from '@/services/auth/auth.service';
+import { store } from '@/store'
+import { MutationTypes } from './store/modules/auth/mutations';
 
 export default defineComponent({
-    setup() {
-        const store = useStore();
-    },
-
     data() {
-        return {
-            auth: new AuthService(),
-            currentUser: '' as string | undefined,
-            accessTokenExpired: false as boolean | undefined,
-            isLoggedIn: false,
 
-            dataEventRecordsItems: []
-        }
+        return {
+            isLoggedIn: computed(() => store.getters.isLoggedIn)
+        };
     },
 
     mounted() {
-        this.auth.getUser().then((user) => {
+        auth.getUser().then((user) => {
+            store.commit(MutationTypes.SET_CURRENT_USER, user);
 
-            this.currentUser = user?.profile?.name;
-            this.accessTokenExpired = user?.expired;
-
-            this.isLoggedIn = (user !== null && !user.expired);
-
-            if (!this.isLoggedIn)
+            if (!store.getters.isLoggedIn)
                 this.login();
         });
     },
 
-    computed: {
-        username(): string | undefined {
-            return this.currentUser;
-        },
-    },
-
     methods: {
         login() {
-            this.auth.login();
+            auth.login();
         },
 
         logout() {
-            this.auth.logout();
+            auth.logout();
         }
     }
 });

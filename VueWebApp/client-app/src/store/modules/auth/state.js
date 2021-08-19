@@ -1,6 +1,4 @@
 export const state = {
-    currentUser: '',
-    accessTokenExpired: false,
-    isLoggedIn: false
+    currentUser: null
 };
 //# sourceMappingURL=state.js.map

@@ -1,9 +1,9 @@
 ﻿import { User } from "oidc-client";
 
 export interface IAuthState {
-    currentUser: User | undefined
+    currentUser: User | null
 }
 
 export const state: IAuthState = {
-    currentUser: undefined
+    currentUser: null
 }

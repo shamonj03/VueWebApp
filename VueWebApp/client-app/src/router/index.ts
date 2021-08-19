@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/home/Home.vue'
 import Users from '@/views/users/Users.vue'
-import { useStore } from '../store'
+import { useStore } from '@/store';
 import AuthService from '../services/auth/auth.service'
+import { MutationTypes } from '../store/modules/auth/mutations'
 
 const routes: Array<RouteRecordRaw> = [
     {

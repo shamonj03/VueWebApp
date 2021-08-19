@@ -1,16 +1,21 @@
-﻿// store/modules/counter/index.ts
-import { Module } from "vuex";
+﻿import { Module, ModuleTree } from "vuex";
 import { getters } from "./getters";
 import { actions } from "./actions";
 import { mutations } from "./mutations";
 import { IRootState, state } from "./state";
+import authModule from "../auth";
 
-// Module
-const Root: Module<IRootState, IRootState> = {
+// Modules
+const modules: ModuleTree<IRootState> = {
+    authModule
+};
+
+const root: Module<IRootState, IRootState> = {
     state,
     getters,
     mutations,
-    actions
+    actions,
+    modules
 };
 
-export default Root;
+export default root;

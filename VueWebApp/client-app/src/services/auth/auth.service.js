@@ -32,4 +32,5 @@ export default class AuthService {
         });
     }
 }
+export const auth = new AuthService();
 //# sourceMappingURL=auth.service.js.map

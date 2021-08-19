@@ -5,15 +5,15 @@ import { AuthMutations, MutationTypes } from "./mutations";
 import { User } from "oidc-client";
 
 export enum ActionTypes {
-    SET_CURRENT_USER = "GET_CURRENT_USER"
+    SET_CURRENT_USER = "SET_CURRENT_USER"
 }
 
 export interface IAuthActions {
-    [ActionTypes.SET_CURRENT_USER]({ commit }: AugmentedActionContext, payload: User): void;
+    [ActionTypes.SET_CURRENT_USER]({ commit }: AugmentedActionContext, payload: User | null): void;
 }
 
 export const actions: ActionTree<IAuthState, IRootState> & IAuthActions = {
-    [ActionTypes.SET_CURRENT_USER]({ commit }, payload: User) {
+    [ActionTypes.SET_CURRENT_USER]({ commit }, payload: User | null) {
         commit(MutationTypes.SET_CURRENT_USER, payload);
     }
 };

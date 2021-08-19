@@ -80,7 +80,6 @@
     <TypeScriptCompile Include="client-app\src\components\helloWorld\helloWorld.ts" />
     <TypeScriptCompile Include="client-app\src\main.ts" />
     <TypeScriptCompile Include="client-app\src\router\index.ts" />
-    <TypeScriptCompile Include="client-app\src\services\auth\authorizedApiBase.ts" />
     <TypeScriptCompile Include="client-app\src\shims-vue.d.ts" />
     <TypeScriptCompile Include="client-app\src\services\swagger.ts" />
     <TypeScriptCompile Include="client-app\src\store\index.ts" />
