@@ -34,7 +34,11 @@ namespace IdentityServerAspNetIdentity
                         AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
                         IdentityTokenLifetime = 300,
 
-                        RequireClientSecret = false,
+                        RequireClientSecret = true,
+                        ClientSecrets = new Secret[]
+                        {
+                            new Secret("SomethingSuperSecret".Sha256())
+                        },
                         AllowedGrantTypes = GrantTypes.Code,
                         RequirePkce = true,
 

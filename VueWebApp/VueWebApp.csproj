@@ -53,7 +53,11 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -75,7 +79,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\services\client.extensions.ts" />
     <TypeScriptCompile Include="client-app\src\app.ts" />
+    <TypeScriptCompile Include="client-app\src\services\authorizedApiBase.ts" />
     <TypeScriptCompile Include="client-app\src\services\auth\auth.service.ts" />
     <TypeScriptCompile Include="client-app\src\components\helloWorld\helloWorld.ts" />
     <TypeScriptCompile Include="client-app\src\main.ts" />

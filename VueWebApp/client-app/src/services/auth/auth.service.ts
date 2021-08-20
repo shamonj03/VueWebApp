@@ -1,4 +1,4 @@
-﻿import { UserManager, WebStorageStateStore, User } from 'oidc-client';
+﻿import { UserManager, WebStorageStateStore, User, UserManagerSettings } from 'oidc-client';
 
 export default class AuthService {
     private userManager: UserManager;
@@ -6,7 +6,7 @@ export default class AuthService {
     constructor() {
         const STS_DOMAIN: string = 'https://localhost:5001';
 
-        const settings: any = {
+        const settings: UserManagerSettings = {
             userStore: new WebStorageStateStore({ store: window.localStorage }),
             authority: STS_DOMAIN,
             client_id: 'vuejs_code_client',
@@ -17,6 +17,7 @@ export default class AuthService {
             scope: 'openid profile',
             post_logout_redirect_uri: 'https://localhost:44363/',
             filterProtocolClaims: true,
+            client_secret: 'SomethingSuperSecret'
         };
 
         this.userManager = new UserManager(settings);

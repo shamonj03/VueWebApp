@@ -6,16 +6,18 @@
 // </auto-generated>
 //----------------------
 // ReSharper disable InconsistentNaming
-export class UserClient {
+import { AuthorizedApiBase } from "./authorizedApiBase";
+export class UserClient extends AuthorizedApiBase {
     http;
     baseUrl;
     jsonParseReviver = undefined;
     constructor(baseUrl, http) {
+        super();
         this.http = http ? http : window;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
     getUsers() {
-        let url_ = this.baseUrl + "/User";
+        let url_ = this.baseUrl + "/api/User";
         url_ = url_.replace(/[?&]$/, "");
         let options_ = {
             method: "GET",
@@ -23,7 +25,9 @@ export class UserClient {
                 "Accept": "application/json"
             }
         };
-        return this.http.fetch(url_, options_).then((_response) => {
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.http.fetch(url_, transformedOptions_);
+        }).then((_response) => {
             return this.processGetUsers(_response);
         });
     }

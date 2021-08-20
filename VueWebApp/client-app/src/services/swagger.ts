@@ -7,22 +7,25 @@
 //----------------------
 // ReSharper disable InconsistentNaming
 
+import { AuthorizedApiBase } from "./authorizedApiBase";
+
 export interface IUserClient {
     getUsers(): Promise<UserDto[]>;
 }
 
-export class UserClient implements IUserClient {
+export class UserClient extends AuthorizedApiBase implements IUserClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        super();
         this.http = http ? http : <any>window;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
     getUsers(): Promise<UserDto[]> {
-        let url_ = this.baseUrl + "/User";
+        let url_ = this.baseUrl + "/api/User";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <RequestInit>{
@@ -32,7 +35,9 @@ export class UserClient implements IUserClient {
             }
         };
 
-        return this.http.fetch(url_, options_).then((_response: Response) => {
+        return this.transformOptions(options_).then(transformedOptions_ => {
+            return this.http.fetch(url_, transformedOptions_);
+        }).then((_response: Response) => {
             return this.processGetUsers(_response);
         });
     }

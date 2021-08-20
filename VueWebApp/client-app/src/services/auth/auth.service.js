@@ -14,6 +14,7 @@ export default class AuthService {
             scope: 'openid profile',
             post_logout_redirect_uri: 'https://localhost:44363/',
             filterProtocolClaims: true,
+            client_secret: 'SomethingSuperSecret'
         };
         this.userManager = new UserManager(settings);
     }
