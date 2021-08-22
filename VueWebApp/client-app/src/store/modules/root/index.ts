@@ -7,7 +7,7 @@ import authModule from "../auth";
 
 // Modules
 const modules: ModuleTree<IRootState> = {
-    authModule
+    auth: authModule
 };
 
 const root: Module<IRootState, IRootState> = {

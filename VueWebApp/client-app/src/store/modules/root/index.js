@@ -5,7 +5,7 @@ import { state } from "./state";
 import authModule from "../auth";
 // Modules
 const modules = {
-    authModule
+    auth: authModule
 };
 const root = {
     state,

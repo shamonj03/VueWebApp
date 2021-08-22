@@ -1,11 +1,10 @@
-﻿import { useStore } from "@/store";
-import { auth } from "@/services/auth/auth.service";
+﻿import { store } from "@/store";
+import { AUTH_STORE } from "@/store/stores";
 
 export class AuthorizedApiBase {
 
     protected transformOptions = (options: RequestInit): Promise<RequestInit> => {
-        const store = useStore();
-        const user = store.getters.currentUser;
+        const user = store.getters[AUTH_STORE.GETTERS.GET_CURRENT_USER];
 
         if (user == null || user.expired)
             return Promise.reject("User not logged in");

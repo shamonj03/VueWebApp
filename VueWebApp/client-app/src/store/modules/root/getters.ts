@@ -1,13 +1,17 @@
 ﻿import { GetterTree } from "vuex";
 import { IRootState } from "./state";
 
+export enum GetterTypes {
+    GET_VERSION = "GET_VERSION"
+}
+
 export interface IRootGetters {
-    version(state: IRootState): string | undefined;
+    [GetterTypes.GET_VERSION](state: IRootState): string | undefined;
 }
 
 export const getters: GetterTree<IRootState, IRootState> &
     IRootGetters = {
-    version: (state: IRootState) => {
+    [GetterTypes.GET_VERSION]: (state: IRootState) => {
         return state.version || undefined;
     }
 };

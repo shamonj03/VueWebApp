@@ -1,6 +1,6 @@
 <template>
     <a-layout id="components-layout-demo-top" class="layout" :style="{ height: '100%' }">
-        <div v-if="isLoggedIn">
+        <div v-if="IS_LOGGED_IN">
             <a-layout-header>
                 <div class="logo" />
                 <a-menu theme="dark"

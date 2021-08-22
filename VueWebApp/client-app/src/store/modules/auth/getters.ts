@@ -4,17 +4,23 @@ import { IAuthState } from "./state";
 
 import { User } from "oidc-client";
 
+
+export enum GetterTypes {
+    GET_CURRENT_USER = "GET_CURRENT_USER",
+    IS_LOGGED_IN = "IS_LOGGED_IN"
+}
+
 export interface IAuthGetters {
-    currentUser(state: IAuthState): User | null;
-    isLoggedIn(state: IAuthState): boolean
+    [GetterTypes.GET_CURRENT_USER](state: IAuthState): User | null;
+    [GetterTypes.IS_LOGGED_IN](state: IAuthState): boolean
 }
 
 export const getters: GetterTree<IAuthState, IRootState> &
     IAuthGetters = {
-    currentUser: (state: IAuthState) => {
+    [GetterTypes.GET_CURRENT_USER]: (state: IAuthState) => {
         return state.currentUser || null;
     },
-    isLoggedIn: (state: IAuthState) => {
+    [GetterTypes.IS_LOGGED_IN]: (state: IAuthState) => {
         return state.currentUser != null && !state.currentUser.expired;
     }
 };

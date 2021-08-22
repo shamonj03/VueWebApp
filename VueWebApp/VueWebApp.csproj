@@ -101,6 +101,7 @@
     <TypeScriptCompile Include="client-app\src\store\modules\root\mutations.ts" />
     <TypeScriptCompile Include="client-app\src\store\modules\root\state.ts" />
     <TypeScriptCompile Include="client-app\src\store\modules\root\types.ts" />
+    <TypeScriptCompile Include="client-app\src\store\stores.ts" />
     <TypeScriptCompile Include="client-app\src\views\home\home.ts" />
     <TypeScriptCompile Include="client-app\src\views\users\users.ts" />
     <TypeScriptCompile Include="client-app\tests\unit\example.spec.ts" />

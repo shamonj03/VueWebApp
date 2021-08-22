@@ -1,22 +1,22 @@
-﻿import { computed, defineComponent } from 'vue'
+﻿import { defineComponent } from 'vue'
+import { mapActions, mapGetters } from 'vuex';
 
 import { auth } from '@/services/auth/auth.service';
-import { store } from '@/store'
-import { MutationTypes } from './store/modules/auth/mutations';
+import { AUTH_STORE } from '@/store/stores';
 
 export default defineComponent({
     data() {
 
         return {
-            isLoggedIn: computed(() => store.getters.isLoggedIn)
+            ...mapGetters([AUTH_STORE.GETTERS.IS_LOGGED_IN])
         };
     },
 
     mounted() {
         auth.getUser().then((user) => {
-            store.commit(MutationTypes.SET_CURRENT_USER, user);
+            this.SET_CURRENT_USER(user);
 
-            if (!store.getters.isLoggedIn)
+            if (!this.IS_LOGGED_IN)
                 this.login();
         });
     },
@@ -28,6 +28,8 @@ export default defineComponent({
 
         logout() {
             auth.logout();
-        }
+        },
+
+        ...mapActions([AUTH_STORE.ACTIONS.SET_CURRENT_USER])
     }
 });
