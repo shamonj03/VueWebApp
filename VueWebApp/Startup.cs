@@ -1,3 +1,4 @@
+using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using VueCliMiddleware;
@@ -57,13 +59,47 @@ namespace VueWebApp
 
             services.AddAuthorization();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.Authority = "https://localhost:5001";
-                    options.Audience = "vuejs_code_client";
-                    options.RequireHttpsMetadata = false;
-                });
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
+
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.Authority = "https://localhost:5001";
+            //        //options.Audience = "vuejs_code_client";
+            //        //options.RequireHttpsMetadata = false;
+            //        options.TokenValidationParameters = new TokenValidationParameters
+            //        {
+            //            ValidateIssuer = true,
+            //            ValidateAudience = true,
+            //            ValidateLifetime = true,
+            //            ValidateIssuerSigningKey = true,
+            //            ValidIssuer = "https://localhost:5001",
+            //            ValidAudience = "vuejs_code_client",
+            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SomethingSuperSecret")),
+            //            NameClaimType = JwtClaimTypes.Name,
+            //            RoleClaimType = JwtClaimTypes.Role
+            //        };
+
+
+            //    });
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = "oidc";
+            })
+            .AddIdentityServerAuthentication(options =>
+            {
+                options.Authority = "https://localhost:5001";
+                options.ApiSecret = "SomethingSuperSecret";
+                options.ApiName = "vuejs_code_client";
+                options.NameClaimType = JwtClaimTypes.Name;
+                options.RoleClaimType = JwtClaimTypes.Role;
+                options.RequireHttpsMetadata = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
