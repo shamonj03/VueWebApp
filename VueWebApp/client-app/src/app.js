@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
-import { auth } from '@/services/auth/auth.service';
 import { mapActions, mapGetters } from 'vuex';
-import { AUTH_STORE } from './store/stores';
+import { auth } from '@/services/auth/auth.service';
+import { AUTH_STORE } from '@/store/stores';
 export default defineComponent({
     data() {
         return {

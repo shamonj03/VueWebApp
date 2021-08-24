@@ -5,12 +5,6 @@ import { auth } from '@/services/auth/auth.service';
 import { AUTH_STORE } from '@/store/stores';
 
 export default defineComponent({
-    data() {
-
-        return {
-            ...mapGetters([AUTH_STORE.GETTERS.IS_LOGGED_IN])
-        };
-    },
 
     mounted() {
         auth.getUser().then((user) => {
@@ -19,6 +13,10 @@ export default defineComponent({
             if (!this.IS_LOGGED_IN)
                 this.login();
         });
+    },
+
+    computed: {
+        ...mapGetters([AUTH_STORE.GETTERS.IS_LOGGED_IN])
     },
 
     methods: {
